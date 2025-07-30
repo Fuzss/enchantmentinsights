@@ -65,7 +65,7 @@ public final class EnchantmentTooltipLines {
             return enchantmentWithLevel.enchantment().unwrapKey().orElseThrow();
         }
     };
-    static final List<TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents>> ITEM_SUPPLIERS = ImmutableList.of(
+    static final List<TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents>> ENCHANTMENT_SUPPLIERS = ImmutableList.of(
             DESCRIPTION.cast(),
             COMPATIBLE_ITEMS,
             MOD_NAME.cast(),
@@ -76,10 +76,18 @@ public final class EnchantmentTooltipLines {
     }
 
     public static List<Component> getEnchantmentItemTooltipLines(EnchantmentWithLevel enchantmentWithLevel) {
-        return TooltipLinesExtractor.getTooltipLines(ITEM_SUPPLIERS,
+        return TooltipLinesExtractor.getTooltipLines(ENCHANTMENT_SUPPLIERS,
                 EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.decorationComponent,
                 EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.decorationStyle,
                 enchantmentWithLevel,
                 EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.itemTooltipLines);
+    }
+
+    public static List<Component> getEnchantmentTableTooltipLines(EnchantmentWithLevel enchantmentWithLevel) {
+        return TooltipLinesExtractor.getTooltipLines(ENCHANTMENT_SUPPLIERS,
+                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips.decorationComponent,
+                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips.decorationStyle,
+                enchantmentWithLevel,
+                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips.tableTooltipLines);
     }
 }

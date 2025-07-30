@@ -3,7 +3,9 @@
   "enchantment.minecraft.bane_of_arthropods.desc": "Increases damage against arthropods.",
   "enchantment.minecraft.binding_curse.desc": "Prevents armor removal.",
   "enchantment.minecraft.blast_protection.desc": "Reduces explosion damage.",
+  "enchantment.minecraft.breach.desc": "Reduces target's armor effectiveness.",
   "enchantment.minecraft.channeling.desc": "Summons lightning on struck targets during storms.",
+  "enchantment.minecraft.density.desc": "Increases mace smash damage.",
   "enchantment.minecraft.depth_strider.desc": "Increases underwater movement speed.",
   "enchantment.minecraft.efficiency.desc": "Increases mining speed.",
   "enchantment.minecraft.feather_falling.desc": "Reduces fall damage.",
@@ -37,5 +39,6 @@
   "enchantment.minecraft.swift_sneak.desc": "Increases sneaking speed.",
   "enchantment.minecraft.thorns.desc": "Damages attacking entities.",
   "enchantment.minecraft.unbreaking.desc": "Increases item durability.",
-  "enchantment.minecraft.vanishing_curse.desc": "Destroys item on death."
+  "enchantment.minecraft.vanishing_curse.desc": "Destroys item on death.",
+  "enchantment.minecraft.wind_burst.desc": "Creates launching wind on mace smash."
 }

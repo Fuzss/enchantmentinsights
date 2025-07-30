@@ -9,4 +9,8 @@ public record EnchantmentWithLevel(Holder<Enchantment> enchantment, int level) {
     public EnchantmentWithLevel(Object2IntMap.Entry<Holder<Enchantment>> entry) {
         this(entry.getKey(), entry.getIntValue());
     }
+
+    public EnchantmentWithLevel(Holder<Enchantment> enchantment) {
+        this(enchantment, 0);
+    }
 }

@@ -11,14 +11,21 @@ import net.minecraft.network.chat.Style;
 public class ClientConfig extends AbstractClientConfig {
     @Config
     public final EnchantmentItemTooltips enchantmentItemTooltips = new EnchantmentItemTooltips();
+    @Config
+    public final EnchantmentTableTooltips enchantmentTableTooltips = new EnchantmentTableTooltips();
 
     public static class EnchantmentItemTooltips extends ItemTooltips {
         @Config
         public final EnchantmentDescriptionTargets itemDescriptionTargets = new EnchantmentDescriptionTargets();
         @Config
-        public final EnchantmentTooltipComponents itemTooltipLines = new EnchantmentTooltipComponents();
+        public final EnchantmentLevelTooltipComponents itemTooltipLines = new EnchantmentLevelTooltipComponents();
         @Config
         public final EnchantmentTextStyling enchantmentNameStyling = new EnchantmentTextStyling();
+    }
+
+    public static class EnchantmentTableTooltips extends ItemTooltips {
+        @Config
+        public final EnchantmentTooltipComponents tableTooltipLines = new EnchantmentTooltipComponents();
     }
 
     public static class EnchantmentDescriptionTargets implements ConfigCore {
@@ -58,10 +65,13 @@ public class ClientConfig extends AbstractClientConfig {
     }
 
     public static class EnchantmentTooltipComponents extends TooltipComponents {
-        @Config(description = "Add the maximum enchantment level as part of the name to tooltips.")
-        public boolean maximumLevel = true;
         @Config(description = "Add tags for primary and other supported items to tooltips.")
         public boolean compatibleItems = true;
+    }
+
+    public static class EnchantmentLevelTooltipComponents extends EnchantmentTooltipComponents {
+        @Config(description = "Add the maximum enchantment level as part of the name to tooltips.")
+        public boolean maximumLevel = true;
 
         public boolean maximumLevel() {
             return this.maximumLevel
