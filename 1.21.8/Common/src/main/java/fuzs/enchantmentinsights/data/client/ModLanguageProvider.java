@@ -19,9 +19,11 @@ public class ModLanguageProvider extends AbstractLanguageProvider {
     private void addVanillaEnchantments(TranslationBuilder translationBuilder) {
         translationBuilder.add(Enchantments.AQUA_AFFINITY, "desc", "Improves underwater mining speed.");
         translationBuilder.add(Enchantments.BANE_OF_ARTHROPODS, "desc", "Increases damage against arthropods.");
-        translationBuilder.add(Enchantments.BLAST_PROTECTION, "desc", "Reduces explosion damage.");
         translationBuilder.add(Enchantments.BINDING_CURSE, "desc", "Prevents armor removal.");
+        translationBuilder.add(Enchantments.BLAST_PROTECTION, "desc", "Reduces explosion damage.");
+        translationBuilder.add(Enchantments.BREACH, "desc", "Reduces target's armor effectiveness.");
         translationBuilder.add(Enchantments.CHANNELING, "desc", "Summons lightning on struck targets during storms.");
+        translationBuilder.add(Enchantments.DENSITY, "desc", "Increases mace smash damage.");
         translationBuilder.add(Enchantments.DEPTH_STRIDER, "desc", "Increases underwater movement speed.");
         translationBuilder.add(Enchantments.EFFICIENCY, "desc", "Increases mining speed.");
         translationBuilder.add(Enchantments.FEATHER_FALLING, "desc", "Reduces fall damage.");
@@ -56,6 +58,7 @@ public class ModLanguageProvider extends AbstractLanguageProvider {
         translationBuilder.add(Enchantments.THORNS, "desc", "Damages attacking entities.");
         translationBuilder.add(Enchantments.UNBREAKING, "desc", "Increases item durability.");
         translationBuilder.add(Enchantments.VANISHING_CURSE, "desc", "Destroys item on death.");
+        translationBuilder.add(Enchantments.WIND_BURST, "desc", "Creates launching wind on mace smash.");
     }
 
     private void addModEffects(TranslationBuilder translationBuilder) {

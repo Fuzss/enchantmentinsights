@@ -8,6 +8,7 @@ import fuzs.enchantmentinsights.config.ClientConfig;
 import fuzs.tooltipinsights.api.v1.client.handler.TooltipDescriptionsHandler;
 import fuzs.tooltipinsights.api.v1.config.ItemDescriptionMode;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
@@ -21,8 +22,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public final class EnchantmentTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel> {
+public final class EnchantmentItemTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel> {
+    public static final TooltipDescriptionsHandler<EnchantmentWithLevel> INSTANCE = new EnchantmentItemTooltipHandler();
+
+    private EnchantmentItemTooltipHandler() {
+        // NO-OP
+    }
 
     @Override
     protected ItemDescriptionMode getItemDescriptionMode() {
@@ -30,14 +37,16 @@ public final class EnchantmentTooltipHandler extends TooltipDescriptionsHandler<
     }
 
     @Override
-    protected Map<String, EnchantmentWithLevel> getByDescriptionId(ItemStack itemStack) {
+    protected Map<String, EnchantmentWithLevel> getByDescriptionId(ItemStack itemStack, HolderLookup.Provider registries) {
+        return getByDescriptionId(EnchantmentComponents.getAllEnchantments(itemStack));
+    }
+
+    static Map<String, EnchantmentWithLevel> getByDescriptionId(Stream<EnchantmentWithLevel> stream) {
         // an item can contain the same effect multiple times, so make sure to include a merge function in our collect call
-        return EnchantmentComponents.getAllEnchantments(itemStack)
-                .mapMulti((EnchantmentWithLevel enchantmentWithLevel, Consumer<Map.Entry<String, EnchantmentWithLevel>> consumer) -> {
+        return stream.mapMulti((EnchantmentWithLevel enchantmentWithLevel, Consumer<Map.Entry<String, EnchantmentWithLevel>> consumer) -> {
                     Component component = enchantmentWithLevel.enchantment().value().description();
-                    TranslatableContents contents = getTranslatableContents(component);
-                    if (contents != null) {
-                        consumer.accept(Map.entry(contents.getKey(), enchantmentWithLevel));
+                    if (component.getContents() instanceof TranslatableContents translatableContents) {
+                        consumer.accept(Map.entry(translatableContents.getKey(), enchantmentWithLevel));
                     }
                 })
                 .collect(Collectors.toMap(Map.Entry::getKey,
@@ -48,7 +57,7 @@ public final class EnchantmentTooltipHandler extends TooltipDescriptionsHandler<
     @Override
     protected Component getValueComponent(EnchantmentWithLevel enchantmentWithLevel) {
         // replace the enchantment name with our coloured variant
-        return getFullname(enchantmentWithLevel.enchantment(), enchantmentWithLevel.level());
+        return getFullName(enchantmentWithLevel.enchantment(), enchantmentWithLevel.level());
     }
 
     @Override
@@ -59,7 +68,7 @@ public final class EnchantmentTooltipHandler extends TooltipDescriptionsHandler<
     /**
      * @see Enchantment#getFullname(Holder, int)
      */
-    public static Component getFullname(Holder<Enchantment> enchantment, int level) {
+    public static Component getFullName(Holder<Enchantment> enchantment, int level) {
         MutableComponent mutableComponent = enchantment.value().description().copy();
         mergeEnchantmentStyle(enchantment, mutableComponent);
         addLevelComponent(enchantment, level, mutableComponent);
