@@ -66,7 +66,7 @@ public class ClientConfig extends AbstractClientConfig {
 
     public static class EnchantmentTooltipComponents extends TooltipComponents {
         @Config(description = "Add tags for primary and other supported items to tooltips.")
-        public boolean compatibleItems = true;
+        public boolean compatibleItems = false;
     }
 
     public static class EnchantmentLevelTooltipComponents extends EnchantmentTooltipComponents {
