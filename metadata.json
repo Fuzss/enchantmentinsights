@@ -1,0 +1,69 @@
+{
+    "mod": {
+        "id": "enchantmentinsights",
+        "group": "fuzs.enchantmentinsights",
+        "name": "Enchantment Insights",
+        "version": "21.11.0",
+        "authors": [
+            "Fuzs"
+        ],
+        "description": "Pretty enchantment tooltips with colorful names and clear descriptions. No mystery, just magic!",
+        "license": "MPL-2.0"
+    },
+    "dependencies": [
+        {
+            "name": "tooltipinsights",
+            "type": "embedded",
+            "platforms": [
+                "fabric",
+                "neoforge"
+            ]
+        },
+        {
+            "name": "fabricapi",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "forgeconfigapiport",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "puzzleslib",
+            "type": "required",
+            "platforms": [
+                "fabric",
+                "neoforge"
+            ]
+        }
+    ],
+    "links": [
+        {
+            "name": "github",
+            "slug": "enchantmentinsights"
+        },
+        {
+            "name": "curseforge",
+            "slug": "enchantment-insights",
+            "id": "1366848"
+        },
+        {
+            "name": "modrinth",
+            "slug": "enchantment-insights",
+            "id": "xLSpHE43"
+        }
+    ],
+    "environments": {
+        "client": "required",
+        "server": "unsupported"
+    },
+    "platforms": [
+        "fabric",
+        "neoforge"
+    ]
+}

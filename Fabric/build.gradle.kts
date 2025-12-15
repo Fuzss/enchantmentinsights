@@ -5,6 +5,8 @@ plugins {
 dependencies {
     modApi(libs.fabricapi.fabric)
     modApi(libs.puzzleslib.fabric)
+    modApi(libs.tooltipinsights.fabric)
+    include(libs.tooltipinsights.fabric)
 }
 
 multiloader {

@@ -6,7 +6,7 @@ import fuzs.enchantmentinsights.client.EnchantmentInsightsClient;
 import fuzs.enchantmentinsights.client.handler.EnchantmentTableTooltipHandler;
 import fuzs.enchantmentinsights.data.client.ModLanguageProvider;
 import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
-import fuzs.puzzleslib.api.core.v1.utility.TransformingForwardingList;
+import fuzs.puzzleslib.api.core.v1.util.TransformingForwardingList;
 import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.EnchantmentScreen;
@@ -18,7 +18,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 @Mod(value = EnchantmentInsights.MOD_ID, dist = Dist.CLIENT)
 public class EnchantmentInsightsNeoForgeClient {
