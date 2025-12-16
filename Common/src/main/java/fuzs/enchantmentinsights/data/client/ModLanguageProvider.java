@@ -38,6 +38,7 @@ public class ModLanguageProvider extends AbstractLanguageProvider {
         translationBuilder.add(Enchantments.LOOTING, "desc", "Increases mob drop rates.");
         translationBuilder.add(Enchantments.LOYALTY, "desc", "Returns thrown trident.");
         translationBuilder.add(Enchantments.LUCK_OF_THE_SEA, "desc", "Increases fishing treasure chances.");
+        translationBuilder.add(Enchantments.LUNGE, "desc", "Launches user forward on spear jab attacks.");
         translationBuilder.add(Enchantments.LURE, "desc", "Reduces fishing time.");
         translationBuilder.add(Enchantments.MENDING, "desc", "Repairs items with experience.");
         translationBuilder.add(Enchantments.MULTISHOT, "desc", "Shoots multiple arrows.");
