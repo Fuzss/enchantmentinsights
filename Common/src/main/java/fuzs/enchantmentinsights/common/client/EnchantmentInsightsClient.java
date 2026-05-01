@@ -1,11 +1,11 @@
-package fuzs.enchantmentinsights.client;
+package fuzs.enchantmentinsights.common.client;
 
-import fuzs.enchantmentinsights.client.handler.EnchantmentItemTooltipHandler;
-import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
-import fuzs.puzzleslib.api.client.event.v1.gui.ItemTooltipCallback;
-import fuzs.puzzleslib.api.event.v1.core.EventPhase;
-import fuzs.puzzleslib.api.init.v3.registry.ResourceKeyHelper;
-import fuzs.tooltipinsights.api.v1.client.handler.TooltipDescriptionsHandler;
+import fuzs.enchantmentinsights.common.client.handler.EnchantmentItemTooltipHandler;
+import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
+import fuzs.puzzleslib.common.api.client.event.v1.gui.ItemTooltipCallback;
+import fuzs.puzzleslib.common.api.event.v1.core.EventPhase;
+import fuzs.puzzleslib.common.api.init.v3.registry.ResourceKeyHelper;
+import fuzs.tooltipinsights.common.api.v1.client.handler.TooltipDescriptionsHandler;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.enchantment.Enchantment;

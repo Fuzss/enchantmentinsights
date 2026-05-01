@@ -1,7 +1,7 @@
 package fuzs.enchantmentinsights.neoforge;
 
-import fuzs.enchantmentinsights.EnchantmentInsights;
-import fuzs.puzzleslib.api.core.v1.ModConstructor;
+import fuzs.enchantmentinsights.common.EnchantmentInsights;
+import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.neoforged.fml.common.Mod;
 
 @Mod(EnchantmentInsights.MOD_ID)

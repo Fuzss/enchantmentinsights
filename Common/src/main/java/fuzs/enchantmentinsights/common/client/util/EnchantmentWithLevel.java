@@ -1,4 +1,4 @@
-package fuzs.enchantmentinsights.client.util;
+package fuzs.enchantmentinsights.common.client.util;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.core.Holder;

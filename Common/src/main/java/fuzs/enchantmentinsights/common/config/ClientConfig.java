@@ -1,10 +1,10 @@
-package fuzs.enchantmentinsights.config;
+package fuzs.enchantmentinsights.common.config;
 
-import fuzs.enchantmentinsights.EnchantmentInsights;
-import fuzs.puzzleslib.api.config.v3.Config;
-import fuzs.puzzleslib.api.config.v3.ConfigCore;
-import fuzs.puzzleslib.api.util.v1.ComponentHelper;
-import fuzs.tooltipinsights.api.v1.config.AbstractClientConfig;
+import fuzs.enchantmentinsights.common.EnchantmentInsights;
+import fuzs.puzzleslib.common.api.config.v3.Config;
+import fuzs.puzzleslib.common.api.config.v3.ConfigCore;
+import fuzs.puzzleslib.common.api.util.v1.ComponentHelper;
+import fuzs.tooltipinsights.common.api.v1.config.AbstractClientConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Style;
 

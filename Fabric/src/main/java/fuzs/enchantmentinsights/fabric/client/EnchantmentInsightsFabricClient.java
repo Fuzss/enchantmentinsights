@@ -1,8 +1,8 @@
 package fuzs.enchantmentinsights.fabric.client;
 
-import fuzs.enchantmentinsights.EnchantmentInsights;
-import fuzs.enchantmentinsights.client.EnchantmentInsightsClient;
-import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
+import fuzs.enchantmentinsights.common.EnchantmentInsights;
+import fuzs.enchantmentinsights.common.client.EnchantmentInsightsClient;
+import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import net.fabricmc.api.ClientModInitializer;
 
 public class EnchantmentInsightsFabricClient implements ClientModInitializer {

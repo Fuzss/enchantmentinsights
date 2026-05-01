@@ -1,9 +1,10 @@
 {
+    "minecraft": "26.1.2",
     "mod": {
         "id": "enchantmentinsights",
         "group": "fuzs.enchantmentinsights",
         "name": "Enchantment Insights",
-        "version": "21.11.1",
+        "version": "26.1.0",
         "authors": [
             "Fuzs"
         ],
@@ -44,13 +45,13 @@
     ],
     "links": [
         {
-            "name": "github",
-            "slug": "enchantmentinsights"
-        },
-        {
             "name": "curseforge",
             "slug": "enchantment-insights",
             "id": "1366848"
+        },
+        {
+            "name": "github",
+            "slug": "enchantment-insights"
         },
         {
             "name": "modrinth",

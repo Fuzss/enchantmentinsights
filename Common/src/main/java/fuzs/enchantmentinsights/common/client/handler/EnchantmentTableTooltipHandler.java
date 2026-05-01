@@ -1,11 +1,11 @@
-package fuzs.enchantmentinsights.client.handler;
+package fuzs.enchantmentinsights.common.client.handler;
 
-import fuzs.enchantmentinsights.EnchantmentInsights;
-import fuzs.enchantmentinsights.client.gui.tooltip.EnchantmentTooltipLines;
-import fuzs.enchantmentinsights.client.util.EnchantmentWithLevel;
-import fuzs.enchantmentinsights.config.ClientConfig;
-import fuzs.tooltipinsights.api.v1.client.handler.TooltipDescriptionsHandler;
-import fuzs.tooltipinsights.api.v1.config.ItemDescriptionMode;
+import fuzs.enchantmentinsights.common.EnchantmentInsights;
+import fuzs.enchantmentinsights.common.client.gui.tooltip.EnchantmentTooltipLines;
+import fuzs.enchantmentinsights.common.client.util.EnchantmentWithLevel;
+import fuzs.enchantmentinsights.common.config.ClientConfig;
+import fuzs.tooltipinsights.common.api.v1.client.handler.TooltipDescriptionsHandler;
+import fuzs.tooltipinsights.common.api.v1.config.ItemDescriptionMode;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;

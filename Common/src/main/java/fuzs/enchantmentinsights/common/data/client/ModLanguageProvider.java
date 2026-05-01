@@ -1,7 +1,7 @@
-package fuzs.enchantmentinsights.data.client;
+package fuzs.enchantmentinsights.common.data.client;
 
-import fuzs.puzzleslib.api.client.data.v2.AbstractLanguageProvider;
-import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
+import fuzs.puzzleslib.common.api.client.data.v2.AbstractLanguageProvider;
+import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
 import net.minecraft.world.item.enchantment.Enchantments;
 
 public class ModLanguageProvider extends AbstractLanguageProvider {

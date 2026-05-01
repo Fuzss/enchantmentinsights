@@ -1,12 +1,12 @@
 package fuzs.enchantmentinsights.neoforge.client;
 
 import com.mojang.datafixers.util.Either;
-import fuzs.enchantmentinsights.EnchantmentInsights;
-import fuzs.enchantmentinsights.client.EnchantmentInsightsClient;
-import fuzs.enchantmentinsights.client.handler.EnchantmentTableTooltipHandler;
-import fuzs.enchantmentinsights.data.client.ModLanguageProvider;
-import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
-import fuzs.puzzleslib.api.core.v1.util.TransformingForwardingList;
+import fuzs.enchantmentinsights.common.EnchantmentInsights;
+import fuzs.enchantmentinsights.common.client.EnchantmentInsightsClient;
+import fuzs.enchantmentinsights.common.client.handler.EnchantmentTableTooltipHandler;
+import fuzs.enchantmentinsights.common.data.client.ModLanguageProvider;
+import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
+import fuzs.puzzleslib.common.api.core.v1.util.TransformingForwardingList;
 import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.EnchantmentScreen;

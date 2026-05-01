@@ -1,8 +1,8 @@
 package fuzs.enchantmentinsights.fabric.mixin.client;
 
-import fuzs.enchantmentinsights.client.handler.EnchantmentTableTooltipHandler;
+import fuzs.enchantmentinsights.common.client.handler.EnchantmentTableTooltipHandler;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.EnchantmentScreen;
 import net.minecraft.network.chat.Component;
 import org.spongepowered.asm.mixin.Final;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import java.util.List;
 
-@Mixin(GuiGraphics.class)
+@Mixin(GuiGraphicsExtractor.class)
 abstract class GuiGraphicsFabricMixin {
     @Shadow
     @Final

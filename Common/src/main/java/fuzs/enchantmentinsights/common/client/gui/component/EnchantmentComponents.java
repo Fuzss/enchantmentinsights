@@ -1,10 +1,10 @@
-package fuzs.enchantmentinsights.client.gui.component;
+package fuzs.enchantmentinsights.common.client.gui.component;
 
 import com.google.common.collect.ImmutableList;
-import fuzs.enchantmentinsights.EnchantmentInsights;
-import fuzs.enchantmentinsights.client.util.EnchantmentWithLevel;
-import fuzs.enchantmentinsights.config.ClientConfig;
-import fuzs.tooltipinsights.api.v1.client.gui.component.TooltipComponentExtractor;
+import fuzs.enchantmentinsights.common.EnchantmentInsights;
+import fuzs.enchantmentinsights.common.client.util.EnchantmentWithLevel;
+import fuzs.enchantmentinsights.common.config.ClientConfig;
+import fuzs.tooltipinsights.common.api.v1.client.gui.component.TooltipComponentExtractor;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
