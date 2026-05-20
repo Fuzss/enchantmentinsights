@@ -19,10 +19,10 @@ abstract class GuiGraphicsFabricMixin {
     @Final
     private Minecraft minecraft;
 
-    @ModifyVariable(method = "setComponentTooltipForNextFrame(Lnet/minecraft/client/gui/Font;Ljava/util/List;II)V",
-            at = @At("HEAD"),
-            argsOnly = true)
-    public List<Component> setComponentTooltipForNextFrame(List<Component> lines) {
+    @ModifyVariable(method = "renderComponentTooltip(Lnet/minecraft/client/gui/Font;Ljava/util/List;II)V",
+                    at = @At("HEAD"),
+                    argsOnly = true)
+    public List<Component> renderComponentTooltip(List<Component> lines) {
         if (this.minecraft.screen instanceof EnchantmentScreen) {
             EnchantmentTableTooltipHandler.INSTANCE.onGatherTooltipComponents(this.minecraft, lines);
         }
