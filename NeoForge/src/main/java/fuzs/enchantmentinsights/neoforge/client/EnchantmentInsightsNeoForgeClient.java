@@ -31,7 +31,7 @@ public class EnchantmentInsightsNeoForgeClient {
 
     private static void registerEventHandlers(IEventBus eventBus) {
         eventBus.addListener((final RenderTooltipEvent.GatherComponents event) -> {
-            if (event.getItemStack().isEmpty() && Minecraft.getInstance().screen instanceof EnchantmentScreen) {
+            if (event.getItemStack().isEmpty() && Minecraft.getInstance().gui.screen() instanceof EnchantmentScreen) {
                 EnchantmentTableTooltipHandler.INSTANCE.onGatherTooltipComponents(Minecraft.getInstance(),
                         new TransformingForwardingList<>(event.getTooltipElements()) {
                             @Override
