@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public final class EnchantmentComponents {
-    static final TooltipComponentExtractor<EnchantmentWithLevel, ItemEnchantments> ENCHANTMENTS = new TooltipComponentExtractor<>(
+    private static final TooltipComponentExtractor<EnchantmentWithLevel, ItemEnchantments> ENCHANTMENTS = new TooltipComponentExtractor<>(
             DataComponents.ENCHANTMENTS) {
         @Override
         protected boolean isEnabled() {
@@ -25,7 +25,7 @@ public final class EnchantmentComponents {
             return itemEnchantments.entrySet().stream().map(EnchantmentWithLevel::new);
         }
     };
-    static final TooltipComponentExtractor<EnchantmentWithLevel, ItemEnchantments> STORED_ENCHANTMENTS = new TooltipComponentExtractor<>(
+    private static final TooltipComponentExtractor<EnchantmentWithLevel, ItemEnchantments> STORED_ENCHANTMENTS = new TooltipComponentExtractor<>(
             DataComponents.STORED_ENCHANTMENTS) {
         @Override
         protected boolean isEnabled() {

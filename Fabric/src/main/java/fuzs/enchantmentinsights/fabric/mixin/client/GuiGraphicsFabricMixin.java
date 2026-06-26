@@ -1,6 +1,6 @@
 package fuzs.enchantmentinsights.fabric.mixin.client;
 
-import fuzs.enchantmentinsights.common.client.handler.EnchantmentTableTooltipHandler;
+import fuzs.enchantmentinsights.common.client.handler.EnchantingTableTooltipHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.EnchantmentScreen;
@@ -24,7 +24,7 @@ abstract class GuiGraphicsFabricMixin {
                     argsOnly = true)
     public List<Component> setComponentTooltipForNextFrame(List<Component> lines) {
         if (this.minecraft.gui.screen() instanceof EnchantmentScreen) {
-            EnchantmentTableTooltipHandler.INSTANCE.onGatherTooltipComponents(this.minecraft, lines);
+            EnchantingTableTooltipHandler.INSTANCE.onGatherTooltipComponents(this.minecraft, lines);
         }
 
         return lines;
