@@ -1,6 +1,6 @@
 package fuzs.enchantmentinsights.common.client;
 
-import fuzs.enchantmentinsights.common.client.handler.EnchantmentItemTooltipHandler;
+import fuzs.enchantmentinsights.common.client.handler.EnchantedItemTooltipHandler;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.common.api.client.event.v1.gui.ItemTooltipCallback;
 import fuzs.puzzleslib.common.api.event.v1.core.EventPhase;
@@ -18,7 +18,7 @@ public class EnchantmentInsightsClient implements ClientModConstructor {
     }
 
     private static void registerEventHandlers() {
-        ItemTooltipCallback.EVENT.register(EventPhase.LAST, EnchantmentItemTooltipHandler.INSTANCE::onItemTooltip);
+        ItemTooltipCallback.EVENT.register(EventPhase.LAST, EnchantedItemTooltipHandler.INSTANCE::onItemTooltip);
     }
 
     @Override

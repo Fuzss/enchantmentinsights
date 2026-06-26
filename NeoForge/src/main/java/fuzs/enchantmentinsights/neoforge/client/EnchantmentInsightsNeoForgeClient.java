@@ -3,7 +3,7 @@ package fuzs.enchantmentinsights.neoforge.client;
 import com.mojang.datafixers.util.Either;
 import fuzs.enchantmentinsights.common.EnchantmentInsights;
 import fuzs.enchantmentinsights.common.client.EnchantmentInsightsClient;
-import fuzs.enchantmentinsights.common.client.handler.EnchantmentTableTooltipHandler;
+import fuzs.enchantmentinsights.common.client.handler.EnchantingTableTooltipHandler;
 import fuzs.enchantmentinsights.common.data.client.ModLanguageProvider;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.common.api.core.v1.util.TransformingForwardingList;
@@ -32,7 +32,7 @@ public class EnchantmentInsightsNeoForgeClient {
     private static void registerEventHandlers(IEventBus eventBus) {
         eventBus.addListener((final RenderTooltipEvent.GatherComponents event) -> {
             if (event.getItemStack().isEmpty() && Minecraft.getInstance().screen instanceof EnchantmentScreen) {
-                EnchantmentTableTooltipHandler.INSTANCE.onGatherTooltipComponents(Minecraft.getInstance(),
+                EnchantingTableTooltipHandler.INSTANCE.onGatherTooltipComponents(Minecraft.getInstance(),
                         new TransformingForwardingList<>(event.getTooltipElements()) {
                             @Override
                             protected @Nullable Component getAsElement(@Nullable Either<FormattedText, TooltipComponent> element) {

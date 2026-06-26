@@ -1,7 +1,6 @@
 package fuzs.enchantmentinsights.common.client.gui.tooltip;
 
 import com.google.common.collect.ImmutableList;
-import fuzs.enchantmentinsights.common.EnchantmentInsights;
 import fuzs.enchantmentinsights.common.client.util.EnchantmentWithLevel;
 import fuzs.enchantmentinsights.common.config.ClientConfig;
 import fuzs.puzzleslib.common.api.init.v3.registry.ResourceKeyHelper;
@@ -9,7 +8,7 @@ import fuzs.tooltipinsights.common.api.v1.client.gui.tooltip.DescriptionLines;
 import fuzs.tooltipinsights.common.api.v1.client.gui.tooltip.InternalNameLines;
 import fuzs.tooltipinsights.common.api.v1.client.gui.tooltip.ModNameLines;
 import fuzs.tooltipinsights.common.api.v1.client.gui.tooltip.TooltipLinesExtractor;
-import fuzs.tooltipinsights.common.api.v1.config.AbstractClientConfig;
+import fuzs.tooltipinsights.common.api.v1.config.TooltipComponentsConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.HolderSet;
 import net.minecraft.network.chat.Component;
@@ -21,22 +20,22 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public final class EnchantmentTooltipLines {
-    static final TooltipLinesExtractor<EnchantmentWithLevel, AbstractClientConfig.TooltipComponents> DESCRIPTION = new DescriptionLines<>() {
+    public static final TooltipLinesExtractor<EnchantmentWithLevel, TooltipComponentsConfig> DESCRIPTION = new DescriptionLines<>() {
         @Override
         protected String getDescriptionId(EnchantmentWithLevel enchantmentWithLevel) {
             ResourceKey<Enchantment> resourceKey = enchantmentWithLevel.enchantment().unwrapKey().orElseThrow();
             return ResourceKeyHelper.getTranslationKey(resourceKey);
         }
     };
-    static final TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents> COMPATIBLE_ITEMS = new TooltipLinesExtractor<>(
+    public static final TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponentsConfig> COMPATIBLE_ITEMS = new TooltipLinesExtractor<>(
             true) {
         @Override
-        protected boolean isEnabled(ClientConfig.EnchantmentTooltipComponents tooltipComponents) {
+        protected boolean isEnabled(ClientConfig.EnchantmentTooltipComponentsConfig tooltipComponents) {
             return tooltipComponents.compatibleItems;
         }
 
         @Override
-        protected Stream<Component> getTooltipLines(EnchantmentWithLevel enchantmentWithLevel) {
+        public Stream<Component> getTooltipLines(EnchantmentWithLevel enchantmentWithLevel, int maxWidth) {
             Enchantment.EnchantmentDefinition enchantmentDefinition = enchantmentWithLevel.enchantment()
                     .value()
                     .definition();
@@ -53,41 +52,30 @@ public final class EnchantmentTooltipLines {
             return Component.literal("#" + tagKey.location()).withStyle(ChatFormatting.LIGHT_PURPLE);
         }
     };
-    static final TooltipLinesExtractor<EnchantmentWithLevel, AbstractClientConfig.TooltipComponents> MOD_NAME = new ModNameLines<>() {
+    public static final TooltipLinesExtractor<EnchantmentWithLevel, TooltipComponentsConfig> MOD_NAME = new ModNameLines<>() {
         @Override
         protected ResourceKey<?> getResourceKey(EnchantmentWithLevel enchantmentWithLevel) {
             return enchantmentWithLevel.enchantment().unwrapKey().orElseThrow();
         }
     };
-    static final TooltipLinesExtractor<EnchantmentWithLevel, AbstractClientConfig.TooltipComponents> INTERNAL_NAME = new InternalNameLines<>() {
+    public static final TooltipLinesExtractor<EnchantmentWithLevel, TooltipComponentsConfig> INTERNAL_NAME = new InternalNameLines<>() {
         @Override
         protected ResourceKey<?> getResourceKey(EnchantmentWithLevel enchantmentWithLevel) {
             return enchantmentWithLevel.enchantment().unwrapKey().orElseThrow();
         }
     };
-    static final List<TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents>> ENCHANTMENT_SUPPLIERS = ImmutableList.of(
+    public static final List<TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponentsConfig>> ENCHANTMENT_SUPPLIERS = ImmutableList.of(
             DESCRIPTION.cast(),
             COMPATIBLE_ITEMS,
+            MOD_NAME.cast(),
+            INTERNAL_NAME.cast());
+    public static final List<TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentLevelTooltipComponentsConfig>> ENCHANTMENT_LEVEL_SUPPLIERS = ImmutableList.of(
+            DESCRIPTION.cast(),
+            COMPATIBLE_ITEMS.cast(),
             MOD_NAME.cast(),
             INTERNAL_NAME.cast());
 
     private EnchantmentTooltipLines() {
         // NO-OP
-    }
-
-    public static List<Component> getEnchantmentItemTooltipLines(EnchantmentWithLevel enchantmentWithLevel) {
-        return TooltipLinesExtractor.getTooltipLines(ENCHANTMENT_SUPPLIERS,
-                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.decorationComponent,
-                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.decorationStyle,
-                enchantmentWithLevel,
-                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.itemTooltipLines);
-    }
-
-    public static List<Component> getEnchantmentTableTooltipLines(EnchantmentWithLevel enchantmentWithLevel) {
-        return TooltipLinesExtractor.getTooltipLines(ENCHANTMENT_SUPPLIERS,
-                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips.decorationComponent,
-                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips.decorationStyle,
-                enchantmentWithLevel,
-                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips.tableTooltipLines);
     }
 }

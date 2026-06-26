@@ -5,8 +5,9 @@ import fuzs.enchantmentinsights.common.client.gui.component.EnchantmentComponent
 import fuzs.enchantmentinsights.common.client.gui.tooltip.EnchantmentTooltipLines;
 import fuzs.enchantmentinsights.common.client.util.EnchantmentWithLevel;
 import fuzs.enchantmentinsights.common.config.ClientConfig;
+import fuzs.tooltipinsights.common.api.v1.client.gui.tooltip.TooltipLinesExtractor;
 import fuzs.tooltipinsights.common.api.v1.client.handler.TooltipDescriptionsHandler;
-import fuzs.tooltipinsights.common.api.v1.config.ItemDescriptionMode;
+import fuzs.tooltipinsights.common.api.v1.config.TooltipDescriptionMode;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.CommonComponents;
@@ -24,16 +25,16 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public final class EnchantmentItemTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel> {
-    public static final TooltipDescriptionsHandler<EnchantmentWithLevel> INSTANCE = new EnchantmentItemTooltipHandler();
+public final class EnchantedItemTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel> {
+    public static final TooltipDescriptionsHandler<EnchantmentWithLevel> INSTANCE = new EnchantedItemTooltipHandler();
 
-    private EnchantmentItemTooltipHandler() {
+    private EnchantedItemTooltipHandler() {
         // NO-OP
     }
 
     @Override
-    protected ItemDescriptionMode getItemDescriptionMode() {
-        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.itemDescriptions;
+    protected TooltipDescriptionMode getTooltipDescriptionMode() {
+        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.tooltipDescriptions;
     }
 
     @Override
@@ -56,13 +57,15 @@ public final class EnchantmentItemTooltipHandler extends TooltipDescriptionsHand
 
     @Override
     protected Component getValueComponent(EnchantmentWithLevel enchantmentWithLevel) {
-        // replace the enchantment name with our coloured variant
+        // Replace the enchantment name with our colored variant.
         return getFullName(enchantmentWithLevel.enchantment(), enchantmentWithLevel.level());
     }
 
     @Override
     protected List<Component> getItemTooltipLines(EnchantmentWithLevel enchantmentWithLevel) {
-        return EnchantmentTooltipLines.getEnchantmentItemTooltipLines(enchantmentWithLevel);
+        return TooltipLinesExtractor.getTooltipLines(EnchantmentTooltipLines.ENCHANTMENT_LEVEL_SUPPLIERS,
+                enchantmentWithLevel,
+                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips);
     }
 
     /**
@@ -89,7 +92,7 @@ public final class EnchantmentItemTooltipHandler extends TooltipDescriptionsHand
     }
 
     private static void addLevelComponent(Holder<Enchantment> enchantment, int level, MutableComponent mutableComponent) {
-        boolean maximumLevel = EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.itemTooltipLines.maximumLevel();
+        boolean maximumLevel = EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.tooltipLines.maximumLevel();
 
         if (maximumLevel || level != 1 || enchantment.value().getMaxLevel() != 1) {
             mutableComponent.append(CommonComponents.SPACE)

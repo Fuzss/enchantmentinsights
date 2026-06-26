@@ -4,8 +4,9 @@ import fuzs.enchantmentinsights.common.EnchantmentInsights;
 import fuzs.enchantmentinsights.common.client.gui.tooltip.EnchantmentTooltipLines;
 import fuzs.enchantmentinsights.common.client.util.EnchantmentWithLevel;
 import fuzs.enchantmentinsights.common.config.ClientConfig;
+import fuzs.tooltipinsights.common.api.v1.client.gui.tooltip.TooltipLinesExtractor;
 import fuzs.tooltipinsights.common.api.v1.client.handler.TooltipDescriptionsHandler;
-import fuzs.tooltipinsights.common.api.v1.config.ItemDescriptionMode;
+import fuzs.tooltipinsights.common.api.v1.config.TooltipDescriptionMode;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -15,16 +16,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public final class EnchantmentTableTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel> {
-    public static final TooltipDescriptionsHandler<EnchantmentWithLevel> INSTANCE = new EnchantmentTableTooltipHandler();
+public final class EnchantingTableTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel> {
+    public static final TooltipDescriptionsHandler<EnchantmentWithLevel> INSTANCE = new EnchantingTableTooltipHandler();
 
-    private EnchantmentTableTooltipHandler() {
+    private EnchantingTableTooltipHandler() {
         // NO-OP
     }
 
     @Override
-    protected ItemDescriptionMode getItemDescriptionMode() {
-        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips.itemDescriptions;
+    protected TooltipDescriptionMode getTooltipDescriptionMode() {
+        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips.tooltipDescriptions;
     }
 
     @Override
@@ -32,11 +33,13 @@ public final class EnchantmentTableTooltipHandler extends TooltipDescriptionsHan
         Stream<EnchantmentWithLevel> stream = registries.lookupOrThrow(Registries.ENCHANTMENT)
                 .listElements()
                 .map(EnchantmentWithLevel::new);
-        return EnchantmentItemTooltipHandler.getByDescriptionId(stream);
+        return EnchantedItemTooltipHandler.getByDescriptionId(stream);
     }
 
     @Override
     protected List<Component> getItemTooltipLines(EnchantmentWithLevel enchantmentWithLevel) {
-        return EnchantmentTooltipLines.getEnchantmentTableTooltipLines(enchantmentWithLevel);
+        return TooltipLinesExtractor.getTooltipLines(EnchantmentTooltipLines.ENCHANTMENT_SUPPLIERS,
+                enchantmentWithLevel,
+                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips);
     }
 }
