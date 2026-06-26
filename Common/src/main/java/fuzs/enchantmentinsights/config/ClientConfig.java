@@ -3,6 +3,8 @@ package fuzs.enchantmentinsights.config;
 import fuzs.enchantmentinsights.EnchantmentInsights;
 import fuzs.puzzleslib.api.config.v3.Config;
 import fuzs.puzzleslib.api.config.v3.ConfigCore;
+import fuzs.tooltipinsights.api.v1.config.StyledTooltipsConfig;
+import fuzs.tooltipinsights.api.v1.config.TextFormattingConfig;
 import fuzs.tooltipinsights.api.v1.config.TooltipComponentsConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Style;
