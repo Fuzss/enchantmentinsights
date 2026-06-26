@@ -23,8 +23,8 @@ abstract class GuiGraphicsFabricMixin {
                     at = @At("HEAD"),
                     argsOnly = true)
     public List<Component> setComponentTooltipForNextFrame(List<Component> lines) {
-        if (this.minecraft.screen instanceof EnchantmentScreen) {
-            EnchantingTableTooltipHandler.INSTANCE.onGatherTooltipComponents(this.minecraft, lines);
+        if (this.minecraft.screen instanceof EnchantmentScreen screen) {
+            EnchantingTableTooltipHandler.INSTANCE.onGatherTooltipComponents(screen.minecraft, lines);
         }
 
         return lines;
