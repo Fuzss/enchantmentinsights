@@ -15,15 +15,11 @@ public class EnchantmentInsightsClient implements ClientModConstructor {
     @Override
     public void onConstructMod() {
         registerEventHandlers();
+        TooltipDescriptionsHandler.printMissingDescriptionWarnings(Registries.ENCHANTMENT,
+                (Holder.Reference<Enchantment> holder) -> ResourceKeyHelper.getTranslationKey(holder.key()));
     }
 
     private static void registerEventHandlers() {
         ItemTooltipCallback.EVENT.register(EventPhase.LAST, EnchantedItemTooltipHandler.INSTANCE::onItemTooltip);
-    }
-
-    @Override
-    public void onClientSetup() {
-        TooltipDescriptionsHandler.printMissingDescriptionWarnings(Registries.ENCHANTMENT,
-                (Holder.Reference<Enchantment> holder) -> ResourceKeyHelper.getTranslationKey(holder.key()));
     }
 }

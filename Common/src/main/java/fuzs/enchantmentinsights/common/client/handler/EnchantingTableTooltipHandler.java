@@ -4,28 +4,25 @@ import fuzs.enchantmentinsights.common.EnchantmentInsights;
 import fuzs.enchantmentinsights.common.client.gui.tooltip.EnchantmentTooltipLines;
 import fuzs.enchantmentinsights.common.client.util.EnchantmentWithLevel;
 import fuzs.enchantmentinsights.common.config.ClientConfig;
-import fuzs.tooltipinsights.common.api.v1.client.gui.tooltip.TooltipLinesExtractor;
 import fuzs.tooltipinsights.common.api.v1.client.handler.TooltipDescriptionsHandler;
-import fuzs.tooltipinsights.common.api.v1.config.TooltipDescriptionMode;
+import fuzs.tooltipinsights.common.api.v1.config.StyledTooltipsConfig;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public final class EnchantingTableTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel> {
-    public static final TooltipDescriptionsHandler<EnchantmentWithLevel> INSTANCE = new EnchantingTableTooltipHandler();
+public final class EnchantingTableTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponentsConfig> {
+    public static final TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponentsConfig> INSTANCE = new EnchantingTableTooltipHandler();
 
     private EnchantingTableTooltipHandler() {
-        // NO-OP
+        super(EnchantmentTooltipLines.ENCHANTMENT_SUPPLIERS);
     }
 
     @Override
-    protected TooltipDescriptionMode getTooltipDescriptionMode() {
-        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips.tooltipDescriptions;
+    protected StyledTooltipsConfig<ClientConfig.EnchantmentTooltipComponentsConfig> getStyleConfig() {
+        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips;
     }
 
     @Override
@@ -34,12 +31,5 @@ public final class EnchantingTableTooltipHandler extends TooltipDescriptionsHand
                 .listElements()
                 .map(EnchantmentWithLevel::new);
         return EnchantedItemTooltipHandler.getByDescriptionId(stream);
-    }
-
-    @Override
-    protected List<Component> getItemTooltipLines(EnchantmentWithLevel enchantmentWithLevel) {
-        return TooltipLinesExtractor.getTooltipLines(EnchantmentTooltipLines.ENCHANTMENT_SUPPLIERS,
-                enchantmentWithLevel,
-                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips);
     }
 }

@@ -5,9 +5,8 @@ import fuzs.enchantmentinsights.common.client.gui.component.EnchantmentComponent
 import fuzs.enchantmentinsights.common.client.gui.tooltip.EnchantmentTooltipLines;
 import fuzs.enchantmentinsights.common.client.util.EnchantmentWithLevel;
 import fuzs.enchantmentinsights.common.config.ClientConfig;
-import fuzs.tooltipinsights.common.api.v1.client.gui.tooltip.TooltipLinesExtractor;
 import fuzs.tooltipinsights.common.api.v1.client.handler.TooltipDescriptionsHandler;
-import fuzs.tooltipinsights.common.api.v1.config.TooltipDescriptionMode;
+import fuzs.tooltipinsights.common.api.v1.config.StyledTooltipsConfig;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.CommonComponents;
@@ -19,22 +18,21 @@ import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public final class EnchantedItemTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel> {
-    public static final TooltipDescriptionsHandler<EnchantmentWithLevel> INSTANCE = new EnchantedItemTooltipHandler();
+public final class EnchantedItemTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentLevelTooltipComponentsConfig> {
+    public static final TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentLevelTooltipComponentsConfig> INSTANCE = new EnchantedItemTooltipHandler();
 
     private EnchantedItemTooltipHandler() {
-        // NO-OP
+        super(EnchantmentTooltipLines.ENCHANTMENT_LEVEL_SUPPLIERS);
     }
 
     @Override
-    protected TooltipDescriptionMode getTooltipDescriptionMode() {
-        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.tooltipDescriptions;
+    protected StyledTooltipsConfig<ClientConfig.EnchantmentLevelTooltipComponentsConfig> getStyleConfig() {
+        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips;
     }
 
     @Override
@@ -42,7 +40,7 @@ public final class EnchantedItemTooltipHandler extends TooltipDescriptionsHandle
         return getByDescriptionId(EnchantmentComponents.getAllEnchantments(itemStack));
     }
 
-    static Map<String, EnchantmentWithLevel> getByDescriptionId(Stream<EnchantmentWithLevel> stream) {
+    public static Map<String, EnchantmentWithLevel> getByDescriptionId(Stream<EnchantmentWithLevel> stream) {
         // an item can contain the same effect multiple times, so make sure to include a merge function in our collect call
         return stream.mapMulti((EnchantmentWithLevel enchantmentWithLevel, Consumer<Map.Entry<String, EnchantmentWithLevel>> consumer) -> {
                     Component component = enchantmentWithLevel.enchantment().value().description();
@@ -59,13 +57,6 @@ public final class EnchantedItemTooltipHandler extends TooltipDescriptionsHandle
     protected Component getValueComponent(EnchantmentWithLevel enchantmentWithLevel) {
         // Replace the enchantment name with our colored variant.
         return getFullName(enchantmentWithLevel.enchantment(), enchantmentWithLevel.level());
-    }
-
-    @Override
-    protected List<Component> getItemTooltipLines(EnchantmentWithLevel enchantmentWithLevel) {
-        return TooltipLinesExtractor.getTooltipLines(EnchantmentTooltipLines.ENCHANTMENT_LEVEL_SUPPLIERS,
-                enchantmentWithLevel,
-                EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips);
     }
 
     /**
