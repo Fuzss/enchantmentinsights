@@ -6,8 +6,8 @@ import fuzs.puzzleslib.common.api.config.v3.ConfigCore;
 import fuzs.tooltipinsights.common.api.v1.config.StyledTooltipsConfig;
 import fuzs.tooltipinsights.common.api.v1.config.TextFormattingConfig;
 import fuzs.tooltipinsights.common.api.v1.config.TooltipComponentsConfig;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 
 public class ClientConfig implements ConfigCore {
     @Config
@@ -36,11 +36,11 @@ public class ClientConfig implements ConfigCore {
 
     public static class EnchantmentTextStylingConfig implements ConfigCore {
         @Config(description = "Formatting for setting a text color and various styles for normal enchantments.")
-        final TextFormattingConfig defaultFormatting = new TextFormattingConfig(TextColor.GREEN);
+        final TextFormattingConfig defaultFormatting = new TextFormattingConfig(ChatFormatting.GREEN);
         @Config(description = "Formatting for setting a text color and various styles for treasure enchantments.")
-        final TextFormattingConfig treasureFormatting = new TextFormattingConfig(TextColor.GOLD);
+        final TextFormattingConfig treasureFormatting = new TextFormattingConfig(ChatFormatting.GOLD);
         @Config(description = "Formatting for setting a text color and various styles for curses.")
-        final TextFormattingConfig curseFormatting = new TextFormattingConfig(TextColor.RED);
+        final TextFormattingConfig curseFormatting = new TextFormattingConfig(ChatFormatting.RED);
 
         public Style defaultStyle;
         public Style treasureStyle;
