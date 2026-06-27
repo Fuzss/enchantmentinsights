@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [v26.2.2-mc26.2.x] - 2026-06-27
 
+### Added
+
+- Add many new enchantment descriptions thanks
+  to [VaporeonScripts](https://github.com/VaporeonScripts), [AccessIsRestricted](https://github.com/AccessIsRestricted), [RoarkCats](https://github.com/RoarkCats),
+  and the original [Enchantment Descriptions](https://modrinth.com/mod/enchantment-descriptions) mod
+
 ### Changed
 
 - Bump the bundled Tooltip Insights library to v26.2.4
