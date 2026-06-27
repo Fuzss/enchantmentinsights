@@ -27,10 +27,10 @@ public final class EnchantmentTooltipLines {
             return ResourceKeyHelper.getTranslationKey(resourceKey);
         }
     };
-    public static final TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponentsConfig> COMPATIBLE_ITEMS = new TooltipLinesExtractor<>(
+    public static final TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents> COMPATIBLE_ITEMS = new TooltipLinesExtractor<>(
             true) {
         @Override
-        protected boolean isEnabled(ClientConfig.EnchantmentTooltipComponentsConfig tooltipComponents) {
+        protected boolean isEnabled(ClientConfig.EnchantmentTooltipComponents tooltipComponents) {
             return tooltipComponents.compatibleItems;
         }
 
@@ -64,12 +64,12 @@ public final class EnchantmentTooltipLines {
             return enchantmentWithLevel.enchantment().unwrapKey().orElseThrow();
         }
     };
-    public static final List<TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponentsConfig>> ENCHANTMENT_SUPPLIERS = ImmutableList.of(
+    public static final List<TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents>> ENCHANTMENT_SUPPLIERS = ImmutableList.of(
             DESCRIPTION.cast(),
             COMPATIBLE_ITEMS,
             MOD_NAME.cast(),
             INTERNAL_NAME.cast());
-    public static final List<TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentLevelTooltipComponentsConfig>> ENCHANTMENT_LEVEL_SUPPLIERS = ImmutableList.of(
+    public static final List<TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentLevelTooltipComponents>> ENCHANTMENT_LEVEL_SUPPLIERS = ImmutableList.of(
             DESCRIPTION.cast(),
             COMPATIBLE_ITEMS.cast(),
             MOD_NAME.cast(),
