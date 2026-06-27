@@ -13,16 +13,16 @@ import net.minecraft.world.item.ItemStack;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public final class EnchantingTableTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponentsConfig> {
-    public static final TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponentsConfig> INSTANCE = new EnchantingTableTooltipHandler();
+public final class EnchantingTableTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents> {
+    public static final TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents> INSTANCE = new EnchantingTableTooltipHandler();
 
     private EnchantingTableTooltipHandler() {
         super(EnchantmentTooltipLines.ENCHANTMENT_SUPPLIERS);
     }
 
     @Override
-    protected StyledTooltipsConfig<ClientConfig.EnchantmentTooltipComponentsConfig> getStyleConfig() {
-        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentTableTooltips;
+    protected StyledTooltipsConfig<ClientConfig.EnchantmentTooltipComponents> getStyleConfig() {
+        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantingTableTooltips;
     }
 
     @Override

@@ -10,31 +10,43 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Style;
 
 public class ClientConfig implements ConfigCore {
-    @Config
-    public final EnchantmentItemTooltips enchantmentItemTooltips = new EnchantmentItemTooltips();
-    @Config
-    public final StyledTooltipsConfig<EnchantmentTooltipComponentsConfig> enchantmentTableTooltips = new StyledTooltipsConfig<>(
-            new EnchantmentTooltipComponentsConfig());
+    @Config(description = "Controls enchantment descriptions shown on item tooltips.")
+    public final EnchantedItemTooltips enchantedItemTooltips = new EnchantedItemTooltips();
+    @Config(description = "Controls enchantment descriptions shown when hovering enchant buttons in the enchanting table screen.")
+    public final EnchantingTableTooltips enchantingTableTooltips = new EnchantingTableTooltips();
 
-    public static class EnchantmentItemTooltips extends StyledTooltipsConfig<EnchantmentLevelTooltipComponentsConfig> {
-        @Config
-        public final EnchantmentDescriptionTargetsConfig itemDescriptionTargets = new EnchantmentDescriptionTargetsConfig();
-        @Config
-        public final EnchantmentTextStylingConfig enchantmentNameStyling = new EnchantmentTextStylingConfig();
+    public static class EnchantedItemTooltips extends StyledTooltipsConfig<EnchantmentLevelTooltipComponents> {
+        @Config(description = "Add enchantment descriptions to certain item groups.")
+        public final EnchantmentDescriptionTargets itemDescriptionTargets = new EnchantmentDescriptionTargets();
+        @Config(description = "Controls text lines added to enchantment description tooltips.")
+        public final EnchantmentLevelTooltipComponents itemTooltipLines = new EnchantmentLevelTooltipComponents();
+        @Config(description = "Formatting for setting a text color and various styles for different enchantments.")
+        public final EnchantmentTextStyling enchantmentNameStyling = new EnchantmentTextStyling();
 
-        public EnchantmentItemTooltips() {
-            super(new EnchantmentLevelTooltipComponentsConfig());
+        @Override
+        public EnchantmentLevelTooltipComponents tooltipLines() {
+            return this.itemTooltipLines;
         }
     }
 
-    public static class EnchantmentDescriptionTargetsConfig implements ConfigCore {
+    public static class EnchantingTableTooltips extends StyledTooltipsConfig<EnchantmentTooltipComponents> {
+        @Config(description = "Controls text lines added to enchantment description tooltips.")
+        public final EnchantmentTooltipComponents widgetTooltipLines = new EnchantmentTooltipComponents();
+
+        @Override
+        public EnchantmentTooltipComponents tooltipLines() {
+            return this.widgetTooltipLines;
+        }
+    }
+
+    public static class EnchantmentDescriptionTargets implements ConfigCore {
         @Config(description = "Add enchantment descriptions to enchanted items.")
         public boolean enchantments = true;
         @Config(description = "Add enchantment descriptions to enchanted books.")
         public boolean storedEnchantments = true;
     }
 
-    public static class EnchantmentTextStylingConfig implements ConfigCore {
+    public static class EnchantmentTextStyling implements ConfigCore {
         @Config(description = "Formatting for setting a text color and various styles for normal enchantments.")
         final TextFormattingConfig defaultFormatting = new TextFormattingConfig(ChatFormatting.GREEN);
         @Config(description = "Formatting for setting a text color and various styles for treasure enchantments.")
@@ -54,18 +66,18 @@ public class ClientConfig implements ConfigCore {
         }
     }
 
-    public static class EnchantmentTooltipComponentsConfig extends TooltipComponentsConfig {
+    public static class EnchantmentTooltipComponents extends TooltipComponentsConfig {
         @Config(description = "Add tags for primary and other supported items to tooltips.")
         public boolean compatibleItems = false;
     }
 
-    public static class EnchantmentLevelTooltipComponentsConfig extends EnchantmentTooltipComponentsConfig {
+    public static class EnchantmentLevelTooltipComponents extends EnchantmentTooltipComponents {
         @Config(description = "Add the maximum enchantment level as part of the name to tooltips.")
         public boolean maximumLevel = true;
 
         public boolean maximumLevel() {
             return this.maximumLevel
-                    && EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.tooltipDescriptions.isActive();
+                    && EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantedItemTooltips.tooltipDescriptions.isActive();
         }
     }
 }

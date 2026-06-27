@@ -23,16 +23,16 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public final class EnchantedItemTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentLevelTooltipComponentsConfig> {
-    public static final TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentLevelTooltipComponentsConfig> INSTANCE = new EnchantedItemTooltipHandler();
+public final class EnchantedItemTooltipHandler extends TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentLevelTooltipComponents> {
+    public static final TooltipDescriptionsHandler<EnchantmentWithLevel, ClientConfig.EnchantmentLevelTooltipComponents> INSTANCE = new EnchantedItemTooltipHandler();
 
     private EnchantedItemTooltipHandler() {
         super(EnchantmentTooltipLines.ENCHANTMENT_LEVEL_SUPPLIERS);
     }
 
     @Override
-    protected StyledTooltipsConfig<ClientConfig.EnchantmentLevelTooltipComponentsConfig> getStyleConfig() {
-        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips;
+    protected StyledTooltipsConfig<ClientConfig.EnchantmentLevelTooltipComponents> getStyleConfig() {
+        return EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantedItemTooltips;
     }
 
     @Override
@@ -72,18 +72,18 @@ public final class EnchantedItemTooltipHandler extends TooltipDescriptionsHandle
     private static void mergeEnchantmentStyle(Holder<Enchantment> enchantment, MutableComponent mutableComponent) {
         if (enchantment.is(EnchantmentTags.CURSE)) {
             ComponentUtils.mergeStyles(mutableComponent,
-                    EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.enchantmentNameStyling.curseStyle);
+                    EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantedItemTooltips.enchantmentNameStyling.curseStyle);
         } else if (enchantment.is(EnchantmentTags.TREASURE)) {
             ComponentUtils.mergeStyles(mutableComponent,
-                    EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.enchantmentNameStyling.treasureStyle);
+                    EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantedItemTooltips.enchantmentNameStyling.treasureStyle);
         } else {
             ComponentUtils.mergeStyles(mutableComponent,
-                    EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.enchantmentNameStyling.defaultStyle);
+                    EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantedItemTooltips.enchantmentNameStyling.defaultStyle);
         }
     }
 
     private static void addLevelComponent(Holder<Enchantment> enchantment, int level, MutableComponent mutableComponent) {
-        boolean maximumLevel = EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantmentItemTooltips.tooltipLines.maximumLevel();
+        boolean maximumLevel = EnchantmentInsights.CONFIG.get(ClientConfig.class).enchantedItemTooltips.itemTooltipLines.maximumLevel();
 
         if (maximumLevel || level != 1 || enchantment.value().getMaxLevel() != 1) {
             mutableComponent.append(CommonComponents.SPACE)
