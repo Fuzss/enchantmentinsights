@@ -63,91 +63,91 @@ public class ModLanguageProvider extends AbstractLanguageProvider {
     }
 
     private void addModEffects(TranslationBuilder translationBuilder) {
-        translationBuilder.add("enchantment.enchantplus.armor/fury", "desc", "Increases damage and armor penetration.");
-        translationBuilder.add("enchantment.enchantplus.armor/lifeplus", "desc", "Increases maximum health.");
-        translationBuilder.add("enchantment.enchantplus.armor/venom_protection",
+        translationBuilder.add("enchantment.enchantplus.armor.fury", "desc", "Increases damage and armor penetration.");
+        translationBuilder.add("enchantment.enchantplus.armor.lifeplus", "desc", "Increases maximum health.");
+        translationBuilder.add("enchantment.enchantplus.armor.venom_protection",
                 "desc",
                 "Reduces negative effect duration.");
-        translationBuilder.add("enchantment.enchantplus.axe/timber", "desc", "Cuts down entire trees.");
-        translationBuilder.add("enchantment.enchantplus.boots/agility", "desc", "Increases movement speed.");
-        translationBuilder.add("enchantment.enchantplus.boots/lava_walker", "desc", "Creates solid lava walkways.");
-        translationBuilder.add("enchantment.enchantplus.boots/step_assist",
+        translationBuilder.add("enchantment.enchantplus.axe.timber", "desc", "Cuts down entire trees.");
+        translationBuilder.add("enchantment.enchantplus.boots.agility", "desc", "Increases movement speed.");
+        translationBuilder.add("enchantment.enchantplus.boots.lava_walker", "desc", "Creates solid lava walkways.");
+        translationBuilder.add("enchantment.enchantplus.boots.step_assist",
                 "desc",
                 "Allows stepping up higher blocks.");
-        translationBuilder.add("enchantment.enchantplus.bow/accuracy_shot", "desc", "Reduces arrow spread.");
-        translationBuilder.add("enchantment.enchantplus.bow/breezing_arrow",
+        translationBuilder.add("enchantment.enchantplus.bow.accuracy_shot", "desc", "Reduces arrow spread.");
+        translationBuilder.add("enchantment.enchantplus.bow.breezing_arrow",
                 "desc",
                 "Launches nearby entities upward.");
-        translationBuilder.add("enchantment.enchantplus.bow/echo_shot", "desc", "Creates echoing arrows.");
-        translationBuilder.add("enchantment.enchantplus.bow/explosive_arrow", "desc", "Creates explosive arrows.");
-        translationBuilder.add("enchantment.enchantplus.bow/storm_arrow", "desc", "Creates storm charged arrows.");
-        translationBuilder.add("enchantment.enchantplus.chestplate/builder_arm", "desc", "Increases block reach.");
-        translationBuilder.add("enchantment.enchantplus.elytra/armored", "desc", "Reduces damage while gliding.");
-        translationBuilder.add("enchantment.enchantplus.helmet/auto_feed", "desc", "Automatically restores hunger.");
-        translationBuilder.add("enchantment.enchantplus.helmet/bright_vision", "desc", "Provides night vision.");
-        translationBuilder.add("enchantment.enchantplus.helmet/voidless", "desc", "Prevents falling into the void.");
-        translationBuilder.add("enchantment.enchantplus.hoe/scyther", "desc", "Tills multiple blocks.");
-        translationBuilder.add("enchantment.enchantplus.leggings/dwarfed", "desc", "Reduces player size.");
-        translationBuilder.add("enchantment.enchantplus.leggings/fast_swim", "desc", "Increases swimming speed.");
-        translationBuilder.add("enchantment.enchantplus.leggings/leaping", "desc", "Increases jump height.");
-        translationBuilder.add("enchantment.enchantplus.leggings/oversize", "desc", "Increases player size.");
-        translationBuilder.add("enchantment.enchantplus.mace/striker", "desc", "Summons lightning on attacks.");
-        translationBuilder.add("enchantment.enchantplus.mace/wind_propulsion",
+        translationBuilder.add("enchantment.enchantplus.bow.echo_shot", "desc", "Creates echoing arrows.");
+        translationBuilder.add("enchantment.enchantplus.bow.explosive_arrow", "desc", "Creates explosive arrows.");
+        translationBuilder.add("enchantment.enchantplus.bow.storm_arrow", "desc", "Creates storm charged arrows.");
+        translationBuilder.add("enchantment.enchantplus.chestplate.builder_arm", "desc", "Increases block reach.");
+        translationBuilder.add("enchantment.enchantplus.elytra.armored", "desc", "Reduces damage while gliding.");
+        translationBuilder.add("enchantment.enchantplus.helmet.auto_feed", "desc", "Automatically restores hunger.");
+        translationBuilder.add("enchantment.enchantplus.helmet.bright_vision", "desc", "Provides night vision.");
+        translationBuilder.add("enchantment.enchantplus.helmet.voidless", "desc", "Prevents falling into the void.");
+        translationBuilder.add("enchantment.enchantplus.hoe.scyther", "desc", "Tills multiple blocks.");
+        translationBuilder.add("enchantment.enchantplus.leggings.dwarfed", "desc", "Reduces player size.");
+        translationBuilder.add("enchantment.enchantplus.leggings.fast_swim", "desc", "Increases swimming speed.");
+        translationBuilder.add("enchantment.enchantplus.leggings.leaping", "desc", "Increases jump height.");
+        translationBuilder.add("enchantment.enchantplus.leggings.oversize", "desc", "Increases player size.");
+        translationBuilder.add("enchantment.enchantplus.mace.striker", "desc", "Summons lightning on attacks.");
+        translationBuilder.add("enchantment.enchantplus.mace.wind_propulsion",
                 "desc",
                 "Launches user upward on impact.");
-        translationBuilder.add("enchantment.enchantplus.pickaxe/bedrock_breaker", "desc", "Allows breaking bedrock.");
-        translationBuilder.add("enchantment.enchantplus.pickaxe/spawner_touch",
+        translationBuilder.add("enchantment.enchantplus.pickaxe.bedrock_breaker", "desc", "Allows breaking bedrock.");
+        translationBuilder.add("enchantment.enchantplus.pickaxe.spawner_touch",
                 "desc",
                 "Allows mining monster spawners.");
-        translationBuilder.add("enchantment.enchantplus.pickaxe/vein_miner", "desc", "Mines connected ore blocks.");
-        translationBuilder.add("enchantment.enchantplus.sword/attack_speed", "desc", "Increases attack speed.");
-        translationBuilder.add("enchantment.enchantplus.sword/fear", "desc", "Delays creeper explosions.");
-        translationBuilder.add("enchantment.enchantplus.sword/life_steal", "desc", "Restores health on hit.");
-        translationBuilder.add("enchantment.enchantplus.sword/poison_aspect", "desc", "Poisons struck targets.");
-        translationBuilder.add("enchantment.enchantplus.sword/pull", "desc", "Chance to obtain monster spawn eggs.");
-        translationBuilder.add("enchantment.enchantplus.sword/reach", "desc", "Increases attack range.");
-        translationBuilder.add("enchantment.enchantplus.sword/xp_boost", "desc", "Increases experience gain.");
-        translationBuilder.add("enchantment.enchantplus.tools/auto_smelt",
+        translationBuilder.add("enchantment.enchantplus.pickaxe.vein_miner", "desc", "Mines connected ore blocks.");
+        translationBuilder.add("enchantment.enchantplus.sword.attack_speed", "desc", "Increases attack speed.");
+        translationBuilder.add("enchantment.enchantplus.sword.fear", "desc", "Delays creeper explosions.");
+        translationBuilder.add("enchantment.enchantplus.sword.life_steal", "desc", "Restores health on hit.");
+        translationBuilder.add("enchantment.enchantplus.sword.poison_aspect", "desc", "Poisons struck targets.");
+        translationBuilder.add("enchantment.enchantplus.sword.pull", "desc", "Chance to obtain monster spawn eggs.");
+        translationBuilder.add("enchantment.enchantplus.sword.reach", "desc", "Increases attack range.");
+        translationBuilder.add("enchantment.enchantplus.sword.xp_boost", "desc", "Increases experience gain.");
+        translationBuilder.add("enchantment.enchantplus.tools.auto_smelt",
                 "desc",
                 "Automatically smelts mined blocks.");
-        translationBuilder.add("enchantment.enchantplus.tools/miningplus", "desc", "Increases mining speed.");
-        translationBuilder.add("enchantment.enchantplus.bow/eternal_frost", "desc", "Creates icy arrows.");
-        translationBuilder.add("enchantment.enchantplus.bow/rebound", "desc", "Arrows ricochet between targets.");
-        translationBuilder.add("enchantment.enchantplus.durability/curse_of_breaking",
+        translationBuilder.add("enchantment.enchantplus.tools.miningplus", "desc", "Increases mining speed.");
+        translationBuilder.add("enchantment.enchantplus.bow.eternal_frost", "desc", "Creates icy arrows.");
+        translationBuilder.add("enchantment.enchantplus.bow.rebound", "desc", "Arrows ricochet between targets.");
+        translationBuilder.add("enchantment.enchantplus.durability.curse_of_breaking",
                 "desc",
                 "Increases durability consumption.");
-        translationBuilder.add("enchantment.enchantplus.durability/curse_of_enchant",
+        translationBuilder.add("enchantment.enchantplus.durability.curse_of_enchant",
                 "desc",
                 "Prevents enchanting and disenchanting.");
-        translationBuilder.add("enchantment.enchantplus.mace/teluric_wave", "desc", "Creates seismic waves.");
-        translationBuilder.add("enchantment.enchantplus.sword/last_hope",
+        translationBuilder.add("enchantment.enchantplus.mace.teluric_wave", "desc", "Creates seismic waves.");
+        translationBuilder.add("enchantment.enchantplus.sword.last_hope",
                 "desc",
                 "Consumes the weapon for a fatal strike.");
-        translationBuilder.add("enchantment.enchantplus.sword/tears_of_asflors",
+        translationBuilder.add("enchantment.enchantplus.sword.tears_of_asflors",
                 "desc",
                 "Converts experience into damage.");
-        translationBuilder.add("enchantment.enchantplus.trident/gungnir_breath",
+        translationBuilder.add("enchantment.enchantplus.trident.gungnir_breath",
                 "desc",
                 "Freezes water and slows targets.");
-        translationBuilder.add("enchantment.enchantplus.elytra/kinetic_protection",
+        translationBuilder.add("enchantment.enchantplus.elytra.kinetic_protection",
                 "desc",
                 "Reduces elytra collision damage.");
-        translationBuilder.add("enchantment.enchantplus.hoe/harvest", "desc", "Plants seeds in an area.");
-        translationBuilder.add("enchantment.enchantplus.sword/dimensional_hit",
+        translationBuilder.add("enchantment.enchantplus.hoe.harvest", "desc", "Plants seeds in an area.");
+        translationBuilder.add("enchantment.enchantplus.sword.dimensional_hit",
                 "desc",
                 "Increases damage in other dimensions.");
-        translationBuilder.add("enchantment.enchantplus.sword/critical", "desc", "Partially ignores armor.");
-        translationBuilder.add("enchantment.enchantplus.sword/death_touch", "desc", "Applies Darkness.");
-        translationBuilder.add("enchantment.enchantplus.sword/runic_despair",
+        translationBuilder.add("enchantment.enchantplus.sword.critical", "desc", "Partially ignores armor.");
+        translationBuilder.add("enchantment.enchantplus.sword.death_touch", "desc", "Applies Darkness.");
+        translationBuilder.add("enchantment.enchantplus.sword.runic_despair",
                 "desc",
                 "Increases damage in the Runic dimension.");
-        translationBuilder.add("enchantment.enchantplus.chestplate/magnet", "desc", "Collects nearby items.");
-        translationBuilder.add("enchantment.enchantplus.mounted/cavalier_egis",
+        translationBuilder.add("enchantment.enchantplus.chestplate.magnet", "desc", "Collects nearby items.");
+        translationBuilder.add("enchantment.enchantplus.mounted.cavalier_egis",
                 "desc",
                 "Reduces damage while mounted.");
-        translationBuilder.add("enchantment.enchantplus.mounted/ethereal_leap", "desc", "Increases mount jump height.");
-        translationBuilder.add("enchantment.enchantplus.mounted/steel_fang", "desc", "Increases wolf damage.");
-        translationBuilder.add("enchantment.enchantplus.mounted/velocity", "desc", "Increases mount speed.");
+        translationBuilder.add("enchantment.enchantplus.mounted.ethereal_leap", "desc", "Increases mount jump height.");
+        translationBuilder.add("enchantment.enchantplus.mounted.steel_fang", "desc", "Increases wolf damage.");
+        translationBuilder.add("enchantment.enchantplus.mounted.velocity", "desc", "Increases mount speed.");
         translationBuilder.add("enchantment.air_jump_enchantment.air_jump", "desc", "Grants an extra midair jump.");
         translationBuilder.add("enchantment.kattersstructures.blunt",
                 "desc",
