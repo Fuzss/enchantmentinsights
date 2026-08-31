@@ -12,6 +12,7 @@ import fuzs.tooltipinsights.common.api.v1.config.TooltipComponentsConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.HolderSet;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -22,9 +23,14 @@ import java.util.stream.Stream;
 public final class EnchantmentTooltipLines {
     public static final TooltipLinesExtractor<EnchantmentWithLevel, TooltipComponentsConfig> DESCRIPTION = new DescriptionLines<>() {
         @Override
-        protected String getDescriptionId(EnchantmentWithLevel enchantmentWithLevel) {
-            ResourceKey<Enchantment> resourceKey = enchantmentWithLevel.enchantment().unwrapKey().orElseThrow();
-            return ResourceKeyHelper.getTranslationKey(resourceKey);
+        protected String getDescriptionId(EnchantmentWithLevel enchantment) {
+            Component component = enchantment.enchantment().value().description();
+            if (component.getContents() instanceof TranslatableContents contents) {
+                return contents.getKey();
+            } else {
+                ResourceKey<Enchantment> key = enchantment.enchantment().unwrapKey().orElseThrow();
+                return ResourceKeyHelper.getTranslationKey(key);
+            }
         }
     };
     public static final TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents> COMPATIBLE_ITEMS = new TooltipLinesExtractor<>(
@@ -35,10 +41,8 @@ public final class EnchantmentTooltipLines {
         }
 
         @Override
-        public Stream<Component> getTooltipLines(EnchantmentWithLevel enchantmentWithLevel, int maxWidth) {
-            Enchantment.EnchantmentDefinition enchantmentDefinition = enchantmentWithLevel.enchantment()
-                    .value()
-                    .definition();
+        public Stream<Component> getTooltipLines(EnchantmentWithLevel enchantment, int maxWidth) {
+            Enchantment.EnchantmentDefinition enchantmentDefinition = enchantment.enchantment().value().definition();
             Stream.Builder<Component> builder = Stream.builder();
             enchantmentDefinition.primaryItems()
                     .flatMap(HolderSet::unwrapKey)
@@ -48,20 +52,20 @@ public final class EnchantmentTooltipLines {
             return builder.build();
         }
 
-        private Component getTagKeyAsComponent(TagKey<?> tagKey) {
-            return Component.literal("#" + tagKey.location()).withStyle(ChatFormatting.LIGHT_PURPLE);
+        private Component getTagKeyAsComponent(TagKey<?> key) {
+            return Component.literal("#" + key.location()).withStyle(ChatFormatting.LIGHT_PURPLE);
         }
     };
     public static final TooltipLinesExtractor<EnchantmentWithLevel, TooltipComponentsConfig> MOD_NAME = new ModNameLines<>() {
         @Override
-        protected ResourceKey<?> getResourceKey(EnchantmentWithLevel enchantmentWithLevel) {
-            return enchantmentWithLevel.enchantment().unwrapKey().orElseThrow();
+        protected ResourceKey<?> getResourceKey(EnchantmentWithLevel enchantment) {
+            return enchantment.enchantment().unwrapKey().orElseThrow();
         }
     };
     public static final TooltipLinesExtractor<EnchantmentWithLevel, TooltipComponentsConfig> INTERNAL_NAME = new InternalNameLines<>() {
         @Override
-        protected ResourceKey<?> getResourceKey(EnchantmentWithLevel enchantmentWithLevel) {
-            return enchantmentWithLevel.enchantment().unwrapKey().orElseThrow();
+        protected ResourceKey<?> getResourceKey(EnchantmentWithLevel enchantment) {
+            return enchantment.enchantment().unwrapKey().orElseThrow();
         }
     };
     public static final List<TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents>> ENCHANTMENT_SUPPLIERS = ImmutableList.of(
