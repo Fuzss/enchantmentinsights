@@ -1,4 +1,5 @@
 {
+    "minecraft": "1.21.1",
     "mod": {
         "id": "enchantmentinsights",
         "group": "fuzs.enchantmentinsights",
@@ -11,14 +12,6 @@
         "license": "MPL-2.0"
     },
     "dependencies": [
-        {
-            "name": "tooltipinsights",
-            "type": "embedded",
-            "platforms": [
-                "fabric",
-                "neoforge"
-            ]
-        },
         {
             "name": "fabricapi",
             "type": "required",
@@ -36,6 +29,14 @@
         {
             "name": "puzzleslib",
             "type": "required",
+            "platforms": [
+                "fabric",
+                "neoforge"
+            ]
+        },
+        {
+            "name": "tooltipinsights",
+            "type": "embedded",
             "platforms": [
                 "fabric",
                 "neoforge"
