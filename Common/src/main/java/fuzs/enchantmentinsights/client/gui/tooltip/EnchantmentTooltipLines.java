@@ -12,6 +12,7 @@ import fuzs.tooltipinsights.api.v1.config.TooltipComponentsConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.HolderSet;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -22,9 +23,14 @@ import java.util.stream.Stream;
 public final class EnchantmentTooltipLines {
     public static final TooltipLinesExtractor<EnchantmentWithLevel, TooltipComponentsConfig> DESCRIPTION = new DescriptionLines<>() {
         @Override
-        protected String getDescriptionId(EnchantmentWithLevel enchantmentWithLevel) {
-            ResourceKey<Enchantment> resourceKey = enchantmentWithLevel.enchantment().unwrapKey().orElseThrow();
-            return ResourceKeyHelper.getTranslationKey(resourceKey);
+        protected String getDescriptionId(EnchantmentWithLevel enchantment) {
+            Component component = enchantment.enchantment().value().description();
+            if (component.getContents() instanceof TranslatableContents contents) {
+                return contents.getKey();
+            } else {
+                ResourceKey<Enchantment> key = enchantment.enchantment().unwrapKey().orElseThrow();
+                return ResourceKeyHelper.getTranslationKey(key);
+            }
         }
     };
     public static final TooltipLinesExtractor<EnchantmentWithLevel, ClientConfig.EnchantmentTooltipComponents> COMPATIBLE_ITEMS = new TooltipLinesExtractor<>(
